@@ -20,7 +20,7 @@ static int lept_parse_literal(lept_context* c, lept_value* v, const char* litera
 	EXPECT(c, literal[0]);
 	for(i = 0; literal[i+1]; ++i) if (c->json[i] != literal[i+1])
 		return LEPT_PARSE_INVALID_VALUE;
-	c->json += 3;
+	c->json += i;
 	v->type = type;
 	return LEPT_PARSE_OK;
 }
