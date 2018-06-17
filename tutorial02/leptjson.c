@@ -1,6 +1,7 @@
 #include "leptjson.h"
 #include <assert.h>  /* assert() */
 #include <stdlib.h>  /* NULL, strtod() */
+#include <ctype.h>
 
 #define EXPECT(c, ch)       do { assert(*c->json == (ch)); c->json++; } while(0)
 
@@ -26,12 +27,28 @@ static int lept_parse_literal(lept_context* c, lept_value* v, const char* litera
 }
 
 static int lept_parse_number(lept_context* c, lept_value* v) {
-    char* end;
+    const char* p = c->json;
+	if(*p == '-') ++p;
+	if(*p == '0') ++p;
+	else {
+		if(!isdigit(*p)) return LEPT_PARSE_INVALID_VALUE;
+		for(++p; isdigit(*p); ++p);
+	}
+	if(*p == '.'){
+		++p;
+		if(!isdigit(*p)) return LEPT_PARSE_INVALID_VALUE;
+		for(++p; isdigit(*p); ++p);
+	}
+	if(*p == 'e' || *p == 'E'){
+		++p;
+		if(*p == '+' || *p == '-') ++p;
+		if(!isdigit(*p)) return LEPT_PARSE_INVALID_VALUE;
+		for(; isdigit(*p); ++p);
+	}
+
     /* \TODO validate number */
-    v->n = strtod(c->json, &end);
-    if (c->json == end)
-        return LEPT_PARSE_INVALID_VALUE;
-    c->json = end;
+    v->n = strtod(c->json, NULL);
+    c->json = p;
     v->type = LEPT_NUMBER;
     return LEPT_PARSE_OK;
 }
