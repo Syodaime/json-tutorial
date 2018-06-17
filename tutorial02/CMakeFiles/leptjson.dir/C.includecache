@@ -15,6 +15,10 @@ stdlib.h
 -
 ctype.h
 -
+errno.h
+-
+math.h
+-
 
 /home/pain/Desktop/Windows_Share/json-tutorial/tutorial02/leptjson.h
 
