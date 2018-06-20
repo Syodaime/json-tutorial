@@ -121,6 +121,7 @@ static int lept_parse_string(lept_context* c, lept_value* v) {
 					case 't' : PUTC(c, '\t');
 							break;
 					default  :
+						c->top = head;
 						return LEPT_PARSE_INVALID_STRING_ESCAPE;
 				}
 				break;
