@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pain/Desktop/Windows_Share/json-tutorial/tutorial05/leptjson.h
+stddef.h
+-
+
+/home/pain/Desktop/Windows_Share/json-tutorial/tutorial05/test.c
+crtdbg.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+leptjson.h
+/home/pain/Desktop/Windows_Share/json-tutorial/tutorial05/leptjson.h
+
