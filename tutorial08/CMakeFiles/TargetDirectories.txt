@@ -1,0 +1,2 @@
+/home/pain/Desktop/Windows_Share/json-tutorial/tutorial08/CMakeFiles/leptjson.dir
+/home/pain/Desktop/Windows_Share/json-tutorial/tutorial08/CMakeFiles/leptjson_test.dir
